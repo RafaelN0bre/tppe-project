@@ -25,6 +25,13 @@ services:
     networks:
       - ravendb_network
 
+  api-test:
+    build:
+      dockerfile: Dockerfile.api
+      context: .
+    container_name: api-test
+    command: make test
+
 volumes:
   ravendb_data:
 

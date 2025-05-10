@@ -12,17 +12,16 @@
 ## Ponto de Control 1 - Estrutura Padrão (07/04/2025)
 
 **Documentação**
-- UML
-- Backlog
-  - História de Usuário
+- [UML](docs/pml/diagrama-classes.svg)
+- [Backlog](docs/backlog.md)
+  - [História de Usuário](docs/backlog.md#histórias-de-usuário)
   
 **Infraestrutura**
-- Docker Compose 
+- [Docker Compose](docker-compose.yml) 
   - Banco de dados
   - Teste TDD unitários (ignorados)
   - Hello World com o Framework escolhido
 
 **Github**
-- Readme com link para os documentos
-- Padrão de commit
-- 
+- [Readme com link para os documentos](README.md)
+- [Padrão de commit](CONTRIBUTING.md)
