@@ -1,0 +1,20 @@
+FROM python:3.13.2-alpine
+
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
+RUN apk update && apk add --no-cache make
+
+WORKDIR /code
+
+COPY ./uv.lock .
+COPY ./pyproject.toml .
+COPY .python-version .
+COPY ./Makefile .
+
+RUN uv sync
+
+COPY ./api ./api
+
+EXPOSE 8081
+
+CMD ["make", "start"]
