@@ -13,7 +13,7 @@ jobs:
       id: plantuml
       uses: grassedge/generate-plantuml-action@v1.5
       with:
-        path: docs/assets/
-        message: "Render PlantUML files"
+        path: docs/pml/
+        message: "chore: update uml content"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
