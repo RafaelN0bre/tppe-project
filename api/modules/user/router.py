@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from .dependency import UserServiceDep
 from .dto import UserCreate, UserUpdate, UserResponse
 
-router = APIRouter(prefix="/users", tags=["users"])
+router = APIRouter(prefix="/users", tags=["Users"])
 
 @router.post("/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
 async def create_user(

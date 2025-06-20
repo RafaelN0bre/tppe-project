@@ -6,6 +6,7 @@ from api.core.auth.router import router as auth_router
 from api.core.exception_handlers import app_exception_handler, internal_server_error_handler
 
 from api.modules.user.router import router as user_router
+from api.modules.property.router import router as property_router
 
 app = FastAPI(
     title="TPPE API",
@@ -27,6 +28,7 @@ app.add_exception_handler(BaseAppException, app_exception_handler)
 # Include routers
 app.include_router(auth_router, prefix="/api")
 app.include_router(user_router, prefix="/api")
+app.include_router(property_router, prefix="/api")
 
 @app.get("/")
 async def root():

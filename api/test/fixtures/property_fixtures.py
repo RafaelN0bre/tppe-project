@@ -1,50 +1,58 @@
 import pytest
-from decimal import Decimal
 
-from api.modules.property.models import Property, PropertyDescription, Amenity, AvailabilityCalendar
 from api.test.utils import create_properties
 
+from api.modules.property.model import House, Apartment, Property, PropertyDescription, Amenity, AvailabilityCalendar
+
 # Common data for all properties
-DEFAULT_DESCRIPTION = PropertyDescription(
+default_description = PropertyDescription(
     bedrooms=3,
     bathrooms=2,
     beds=4,
     max_guests=6
 )
 
-DEFAULT_AMENITIES = [
+default_amenities = [
     Amenity(name="WiFi"),
     Amenity(name="Kitchen")
 ]
 
-DEFAULT_CALENDAR = AvailabilityCalendar(
+default_calendar = AvailabilityCalendar(
     available_dates=[],
     blocked_dates=[]
 )
 
 @pytest.fixture(scope="session")
 def setup_properties(test_store, setup_users):
-    """Create and return real Property entities."""
-    host = setup_users[0]  # Get the first user (Host1)
-    
+    """
+    Create and return real Property entities (House and Apartment).
+    Uses setup_users to set the owner_id for each property.
+    """
+    assert setup_users, "setup_users must provide at least one user."
+    host = setup_users[0]  # Use the first user as the property owner
+
     properties = [
-        Property(
+        House(
             title="Beautiful House",
-            description=DEFAULT_DESCRIPTION,
+            description=default_description,
             address=host.address,
-            price_per_night=Decimal("150.00"),
-            amenities=DEFAULT_AMENITIES,
-            availability_calendar=DEFAULT_CALENDAR,
-            owner_id=host.Id
+            price_per_night=150,
+            amenities=default_amenities,
+            availability_calendar=default_calendar,
+            owner_id=host.Id,
+            has_pool=True,
+            has_garden=True
         ),
-        Property(
+        Apartment(
             title="Cozy Apartment",
-            description=DEFAULT_DESCRIPTION,
+            description=default_description,
             address=host.address,
-            price_per_night=Decimal("100.00"),
-            amenities=DEFAULT_AMENITIES,
-            availability_calendar=DEFAULT_CALENDAR,
-            owner_id=host.Id
+            price_per_night=100,
+            amenities=default_amenities,
+            availability_calendar=default_calendar,
+            owner_id=host.Id,
+            has_elevator=True,
+            has_parking=True
         )
     ]
 
