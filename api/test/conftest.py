@@ -1,8 +1,7 @@
-import pytest
-from fastapi.testclient import TestClient
-from api.__main__ import app 
 
-@pytest.fixture
-def client():
-    client = TestClient(app)
-    return client
+
+pytest_plugins = [
+    "api.test.fixtures.db_fixtures",
+    "api.test.fixtures.user_fixtures",
+    "api.test.fixtures.http_client_fixtures",
+]

@@ -1,4 +1,4 @@
-@startuml
+@startuml Diagrama de Classes
 class User {
   + id: uuid.UUID
   + name: str
@@ -98,11 +98,11 @@ User "1" --> "0..*" Property : owns
 User "1" --> "0..*" Phone : phones
 Property "1" --> "0..*" Reservation : reservations
 UserRole <-- "1" User : role
-PropertyDescription <-- "1" Property : description
-Address <-- "1" User : address
-Address <-- "1" Property : address
+PropertyDescription "1" <-- "1" Property : description
+Address "1" <-- "1" User : address
+Address "1" <-- "1" Property : address
 Amenity "0..*" --> "1" Property : amenities
-AvailabilityCalendar <-- "1" Property : availability_calendar
+AvailabilityCalendar "1" <-- "1" Property : availability_calendar
 AvailabilityCalendar "1" --> "0..*" DateRange : contains
 BookingPeriod <-- "1" Reservation : period
 ReservationStatus <-- "1" Reservation : status
