@@ -1,18 +1,18 @@
 services:
-  ravendb:
-    image: ravendb/ravendb:ubuntu-latest
-    container_name: ravendb
-    ports:
-      - "8080:8080"
-      - "38888:38888"
-    restart: unless-stopped
-    environment:
-      - RAVEN_Setup_Mode=None
-      - RAVEN_Security_UnsecuredAccessAllowed=PrivateNetwork
-    volumes:
-      - ravendb_data:/var/lib/ravendb/data
-    networks:
-      - ravendb_network
+  # ravendb:
+  #   image: ravendb/ravendb:ubuntu-latest
+  #   container_name: ravendb
+  #   ports:
+  #     - "8080:8080"
+  #     - "38888:38888"
+  #   restart: unless-stopped
+  #   environment:
+  #     - RAVEN_Setup_Mode=None
+  #     - RAVEN_Security_UnsecuredAccessAllowed=PrivateNetwork
+  #   volumes:
+  #     - ravendb_data:/var/lib/ravendb/data
+  #   networks:
+  #     - ravendb_network
 
   api:
     build:

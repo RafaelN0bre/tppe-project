@@ -10,6 +10,7 @@ COPY ./uv.lock .
 COPY ./pyproject.toml .
 COPY .python-version .
 COPY ./Makefile .
+COPY .env .
 
 RUN uv sync
 
