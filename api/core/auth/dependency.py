@@ -12,7 +12,7 @@ from api.core.exceptions import ForbiddenException, UnauthorizedException
 
 from .service import verify_password
 
-OAuth2Dep = Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="auth/token"))]
+OAuth2Dep = Annotated[str, Depends(OAuth2PasswordBearer(tokenUrl="api/auth/token"))]
 
 def authenticate_user(
     get_user: Callable,

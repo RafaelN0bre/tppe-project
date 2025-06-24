@@ -1,11 +1,10 @@
 from typing import Optional, List
 from ravendb import DocumentSession
-from decimal import Decimal
+
+from api.core.exceptions import NotFoundException
 
 from .model import Apartment, House, Property
 from .dto import PropertyCreate, PropertyUpdate
-from api.modules.user.model import User
-from api.core.exceptions import NotFoundException
 
 class PropertyService:
     def __init__(self, session: DocumentSession):

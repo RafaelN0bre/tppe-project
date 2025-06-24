@@ -1,8 +1,9 @@
 import base64
 import tempfile
 
-from typing import Any, Generator
+from typing import Any, Generator, Type
 from ravendb import DocumentStore, DocumentSession
+from ravendb.documents.conventions import DocumentConventions
 
 from api.core.settings import settings
 from api.core.decorators import singleton
@@ -12,6 +13,13 @@ from api.core.utils import convert_pfx_to_pem
 class RavenStore(DocumentStore):
 
     def __init__(self):
+        def _custom_find_collection_name(object_type: Type) -> str:
+            from api.modules.property.model import Property
+            
+            if issubclass(object_type, Property):
+                return "Properties"
+            return DocumentConventions.default_get_collection_name(object_type)
+
         super().__init__([settings.dbserver_url], settings.dbserver_database)
 
         pfx_base64 = settings.dbserver_cert_base64
@@ -24,6 +32,7 @@ class RavenStore(DocumentStore):
         self.certificate_pem_path = temp_cert_file.name
 
         self.conventions.identity_parts_separator = "-"
+        self.conventions.find_collection_name = _custom_find_collection_name
         self.initialize()
 
 

@@ -42,7 +42,7 @@ ruff:
 	uv run ruff check
 
 seed:
-	$(PYTHONPATH) && uv run python api/database/seeders/DBSeeder.py
+	$(PYTHONPATH) && uv run python api/core/database/seeders/DBSeeder.py
 
 migrate:
 	$(PYTHONPATH) && uv run python api/database/migrations/DBMigration.py

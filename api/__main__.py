@@ -7,6 +7,7 @@ from api.core.exception_handlers import app_exception_handler, internal_server_e
 
 from api.modules.user.router import router as user_router
 from api.modules.property.router import router as property_router
+from api.modules.reservation.router import router as reservation_router
 
 app = FastAPI(
     title="TPPE API",
@@ -29,6 +30,7 @@ app.add_exception_handler(BaseAppException, app_exception_handler)
 app.include_router(auth_router, prefix="/api")
 app.include_router(user_router, prefix="/api")
 app.include_router(property_router, prefix="/api")
+app.include_router(reservation_router, prefix="/api")
 
 @app.get("/")
 async def root():
