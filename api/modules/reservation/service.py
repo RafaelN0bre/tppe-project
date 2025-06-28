@@ -95,8 +95,10 @@ class ReservationService:
         self.session.delete(reservation)
         return True
 
-    async def list_reservations(self, property_id: Optional[str] = None) -> List[Reservation]:
+    async def list_reservations(self, property_id: Optional[str] = None, user_id: Optional[str] = None) -> List[Reservation]:
         query = self.session.query(object_type=Reservation)
         if property_id:
             query = query.where_equals("property_id", property_id)
+        if user_id:
+            query = query.where_equals("guest_id", user_id)
         return list(query) 

@@ -1,17 +1,20 @@
-from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
+from typing import List, Optional
+from fastapi import APIRouter, Depends, HTTPException, status, File, UploadFile, Path, Query
 
 from .dependency import PropertyServiceDep
 from .dto import PropertyCreate, PropertyUpdate, PropertyResponse
+from api.core.database.dependency import SessionDep
+from api.core.responses import DefaultResponse
 
 router = APIRouter(prefix="/properties", tags=["Properties"])
 
 # List all properties (House or Apartment)
 @router.get("/", response_model=List[PropertyResponse])
 async def list_properties(
-    property_service: PropertyServiceDep
+    property_service: PropertyServiceDep,
+    owner_id: Optional[str] = Query(None, description="Filter properties by owner ID")
 ) -> List[PropertyResponse]:
-    properties = await property_service.list_properties()
+    properties = await property_service.list_properties(owner_id=owner_id)
     return [property_obj.to_response() for property_obj in properties]
 
 # Get a property by ID (House or Apartment)

@@ -11,9 +11,10 @@ router = APIRouter(prefix="/reservations", tags=["Reservations"])
 @router.get("/", response_model=List[ReservationResponse])
 async def list_reservations(
     reservation_service: ReservationServiceDep,
-    property_id: Optional[str] = Query(None, description="Filter reservations by property ID")
+    property_id: Optional[str] = Query(None, description="Filter reservations by property ID"),
+    user_id: Optional[str] = Query(None, description="Filter reservations by user ID")
 ) -> List[ReservationResponse]:
-    reservations = await reservation_service.list_reservations(property_id=property_id)
+    reservations = await reservation_service.list_reservations(property_id=property_id, user_id=user_id)
     return [ReservationResponse(**r.model_dump(by_alias=True)) for r in reservations]
 
 @router.get("/{reservation_id}", response_model=ReservationResponse)

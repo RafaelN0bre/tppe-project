@@ -43,5 +43,8 @@ class PropertyService:
         self.session.delete(property_obj)
         return True
 
-    async def list_properties(self) -> List[Property]:
-        return list(self.session.query(object_type=Property)) 
+    async def list_properties(self, owner_id: Optional[str] = None) -> List[Property]:
+        query = self.session.query(object_type=Property)
+        if owner_id:
+            query = query.where_equals("owner_id", owner_id)
+        return list(query) 
