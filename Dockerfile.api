@@ -9,6 +9,7 @@ WORKDIR /code
 COPY ./uv.lock .
 COPY ./pyproject.toml .
 COPY .python-version .
+COPY ./pytest.ini .
 COPY ./Makefile .
 COPY .env .
 

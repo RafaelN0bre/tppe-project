@@ -1,36 +1,36 @@
 services:
-  # ravendb:
-  #   image: ravendb/ravendb:ubuntu-latest
-  #   container_name: ravendb
-  #   ports:
-  #     - "8080:8080"
-  #     - "38888:38888"
-  #   restart: unless-stopped
-  #   environment:
-  #     - RAVEN_Setup_Mode=None
-  #     - RAVEN_Security_UnsecuredAccessAllowed=PrivateNetwork
-  #   volumes:
-  #     - ravendb_data:/var/lib/ravendb/data
-  #   networks:
-  #     - ravendb_network
-
-  api:
+  tppe-api:
     build:
-      dockerfile: Dockerfile.api
       context: .
-    container_name: api
+      dockerfile: Dockerfile.api
+    container_name: tppe-api
     ports:
       - "8081:8081"
     restart: unless-stopped
     networks:
       - ravendb_network
 
-  api-test:
+  # tppe-api-test:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.api
+  #   container_name: tppe-api-test
+  #   command: make test
+  #   networks:
+  #     - ravendb_network
+
+  tppe-front:
     build:
-      dockerfile: Dockerfile.api
       context: .
-    container_name: api-test
-    command: make test
+      dockerfile: Dockerfile.front
+    container_name: tppe-front
+    ports:
+      - "3000:3000"  # porta padrão do Next.js
+    restart: unless-stopped
+    networks:
+      - ravendb_network
+    depends_on:
+      - tppe-api
 
 volumes:
   ravendb_data:
