@@ -25,6 +25,9 @@ dev:
 start:
 	uv run uvicorn api.__main__:app --host 0.0.0.0 --port 8081
 
+selenium:
+	uv run pytest front/test/e2e
+
 test:
 	$(PYTHONPATH) && time uv run pytest $(or $(TEST_PATH),)
 

@@ -10,14 +10,14 @@ services:
     networks:
       - ravendb_network
 
-  # tppe-api-test:
-  #   build:
-  #     context: .
-  #     dockerfile: Dockerfile.api
-  #   container_name: tppe-api-test
-  #   command: make test
-  #   networks:
-  #     - ravendb_network
+  tppe-api-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: tppe-api-test
+    command: make ruff && make test
+    networks:
+      - ravendb_network
 
   tppe-front:
     build:

@@ -1,5 +1,3 @@
-import pytest 
-
 def test_create_user(admin_http_client):
     user_data = {
         "name": "John Doe",

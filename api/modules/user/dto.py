@@ -2,7 +2,7 @@
 
 from typing import Optional, List
 from typing_extensions import Self
-from pydantic import BaseModel, EmailStr, Field, SecretStr, model_validator, ConfigDict
+from pydantic import BaseModel, EmailStr, SecretStr, model_validator, ConfigDict
 
 from .model import User
 from .enum import UserRole

@@ -1,10 +1,8 @@
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, status, File, UploadFile, Path, Query
+from fastapi import APIRouter, HTTPException, status, Query
 
 from .dependency import PropertyServiceDep
 from .dto import PropertyCreate, PropertyUpdate, PropertyResponse
-from api.core.database.dependency import SessionDep
-from api.core.responses import DefaultResponse
 
 router = APIRouter(prefix="/properties", tags=["Properties"])
 

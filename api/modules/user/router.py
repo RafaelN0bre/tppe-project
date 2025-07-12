@@ -1,5 +1,5 @@
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, HTTPException, status
 
 from .dependency import UserServiceDep
 from .dto import UserCreate, UserUpdate, UserResponse

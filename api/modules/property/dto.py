@@ -1,7 +1,6 @@
+from pydantic import BaseModel
 from typing import Optional, List, Union, Literal
-from pydantic import BaseModel, Field, ConfigDict
 
-from .model import Property, House, Apartment, PropertyDescription, Amenity, AvailabilityCalendar
 from ..shared.model import Address
 
 class PropertyDescriptionMixin(BaseModel):

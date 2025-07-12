@@ -1,5 +1,5 @@
 from typing import List, Optional
-from pydantic import BaseModel, EmailStr, Field, ConfigDict, SecretStr
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 
 from .enum import UserRole
 from ..shared.model import Address, Phone

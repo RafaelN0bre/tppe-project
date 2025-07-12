@@ -1,7 +1,3 @@
-import pytest
-from decimal import Decimal
-from api.modules.property.model import House, Apartment
-
 def test_create_property(host_http_client, setup_users):
     property_data = {
         "type": "house",

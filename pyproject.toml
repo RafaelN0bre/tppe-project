@@ -18,4 +18,6 @@ dependencies = [
     "pyjwt>=2.10.1",
     "ravendb-embedded>=7.0.2",
     "ruff>=0.11.13",
+    "selenium>=4.34.2",
+    "webdriver-manager>=4.0.2",
 ]

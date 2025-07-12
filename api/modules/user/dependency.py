@@ -1,7 +1,4 @@
-# Placeholder for user-specific dependencies. 
-
 from fastapi import Depends
-from ravendb import DocumentSession
 from typing import Annotated
 
 from api.core.database.dependency import SessionDep

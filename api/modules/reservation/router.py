@@ -1,8 +1,9 @@
 from typing import List, Optional
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, status, Query
 
 from api.core.exceptions import NotFoundException
 from api.modules.reservation.model import Reservation
+
 from .dependency import ReservationServiceDep
 from .dto import ReservationCreate, ReservationUpdate, ReservationResponse
 

@@ -1,12 +1,14 @@
+import datetime
 from typing import Optional, List
 from ravendb import DocumentSession
-from decimal import Decimal
-from .model import Reservation, BookingPeriod, ReservationStatus
-from .dto import ReservationCreate, ReservationUpdate
-from api.core.exceptions import NotFoundException, ValidationErrorException
-from api.modules.property.model import Property
+
 from api.modules.user.model import User
-import datetime
+from api.modules.property.model import Property
+from api.core.exceptions import NotFoundException, ValidationErrorException
+
+from .dto import ReservationCreate, ReservationUpdate
+from .model import Reservation, BookingPeriod, ReservationStatus
+
 
 class ReservationService:
     def __init__(self, session: DocumentSession):

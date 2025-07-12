@@ -25,3 +25,11 @@
 **Github**
 - [Readme com link para os documentos](README.md)
 - [Padrão de commit](CONTRIBUTING.md)
+
+## Ponto de Controle 2 - Backend Completo e Protótipo 
+
+**Para Fazer**
+- Adicionar Imagem no Imóvel
+- Adicionar Testes de Integração
+- Adicionar CI/CD
+
