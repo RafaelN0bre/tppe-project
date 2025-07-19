@@ -10,7 +10,7 @@ jobs:
   lint-and-test:
     runs-on: ubuntu-latest
     container:
-      image: rafaelnobre00/idea-analytics-ci:latest
+      image: rafaelnobre00/rafaelnobre00/tppe-ci:latest
       options: --user root
     steps:
       - name: Checkout repo
