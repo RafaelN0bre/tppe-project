@@ -21,8 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          git submodule update --init
-          make install-dependencies
+          uv sync
 
       - name: Lint with Ruff
         run: make ruff
