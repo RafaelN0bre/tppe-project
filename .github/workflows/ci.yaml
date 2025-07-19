@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: rafaelnobre00/idea-analytics-ci:latest
-      options: --user root  # if you need root for installs; otherwise omit
+      options: --user root
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -29,5 +29,4 @@ jobs:
       - name: Run tests
         run: |
           cp .env.example .env
-          mkdir -p api/static/ui5
-          make test
+          dotnet /__w/tppe-project/tppe-project/.venv/lib/python3.13/site-packages/ravendb_embedded/target/nuget/contentFiles/any/any/RavenDBServer/Raven.Server.dll --Embedded.ParentProcessId=421 --License.Eula.Accepted=true --Setup.Mode=None --DataDir=/__w/tppe-project/tppe-project/.venv/lib/python3.13/site-packages/ravendb_embedded/RavenDB --Logs.Path=/__w/tppe-project/tppe-project/.venv/lib/python3.13/site-packages/ravendb_embedded/RavenDB/Logs --ServerUrl=http://127.0.0.1:0
