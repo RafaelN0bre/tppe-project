@@ -15,9 +15,6 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-        with:
-          submodules: recursive
-          fetch-depth: 0
 
       - name: Install dependencies
         run: |
@@ -29,4 +26,4 @@ jobs:
       - name: Run tests
         run: |
           cp .env.example .env
-          dotnet /__w/tppe-project/tppe-project/.venv/lib/python3.13/site-packages/ravendb_embedded/target/nuget/contentFiles/any/any/RavenDBServer/Raven.Server.dll --Embedded.ParentProcessId=421 --License.Eula.Accepted=true --Setup.Mode=None --DataDir=/__w/tppe-project/tppe-project/.venv/lib/python3.13/site-packages/ravendb_embedded/RavenDB --Logs.Path=/__w/tppe-project/tppe-project/.venv/lib/python3.13/site-packages/ravendb_embedded/RavenDB/Logs --ServerUrl=http://127.0.0.1:0
+          make test
